@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class lab6 {
 
     public static LinkedList initialize_deck() {
@@ -19,8 +21,38 @@ public class lab6 {
     }
 
     private static void play_blind_mans_bluff(LinkedList player1, LinkedList computer, LinkedList deck) {
-        System.out.println("\nStarting Blind mans Bluff \n");
-        // play the game FIXME
+        System.out.println("\nStarting Blind Man’s Bluff\n");
+
+        int player1Score = 0;
+        int computerScore = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        while (player1.size > 0 && computer.size > 0) {
+            System.out.println("\nPress Enter to play the next round...");
+            scanner.nextLine();
+
+            // Each player draws the top card
+            Card player1Card = player1.remove_from_head();
+            Card computerCard = computer.remove_from_head();
+
+            // Display cards (opponent's card is seen first)
+            System.out.print("Computer drew: ");
+            computerCard.print_card();
+            System.out.print("\nPlayer 1 drew: ");
+            player1Card.print_card();
+            System.out.println();
+
+            // Compare ranks
+            if (player1Card.rank.ordinal() > computerCard.rank.ordinal()) {
+                System.out.println("Player 1 wins this round!\n");
+                player1Score++;
+            } else if (player1Card.rank.ordinal() < computerCard.rank.ordinal()) {
+                System.out.println("Computer wins this round!\n");
+                computerScore++;
+            } else {
+                System.out.println("It’s a tie!\n");
+            }
+        }
     }
 
     public static void main(String[] args) {

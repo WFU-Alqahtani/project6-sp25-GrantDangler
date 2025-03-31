@@ -8,12 +8,12 @@ public class Node {
     public Node(){
         this.data = new Card();
         next = null;
-        prev = null;
+        //prev = null;
     }
 
     public Node(Card data){
         this.data = data;
         next = null;
-        prev = null;
+        //prev = null;
     }
 }
